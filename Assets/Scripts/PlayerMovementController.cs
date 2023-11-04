@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementController : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class PlayerMovementHandler : MonoBehaviour
 {
 
     [Header("Player Properties")]
-    public float PlayerSpeed;
+    [SerializeField] private float _moveSpeed;
 
-    // Update is called once per frame
-    void Update()
+    private Rigidbody2D _rb2D;
+
+    private void Awake()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = Vector2.MoveTowards(transform.position, mousePosition, PlayerSpeed * Time.deltaTime);
+        _rb2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        _rb2D.velocity = new Vector2(Input.GetAxis("Horizontal") * _moveSpeed,
+                                     Input.GetAxis("Vertical") * _moveSpeed);
     }
 
 }
