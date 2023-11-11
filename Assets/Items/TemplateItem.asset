@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f577b634cebe37047bcc7016131e6339, type: 3}
-  m_Name: Template
+  m_Name: TemplateItem
   m_EditorClassIdentifier: 
   ItemName: Red Mushroom
   ItemDescription: This is a red mushroom.
