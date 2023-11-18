@@ -12,7 +12,7 @@ public class UIHotbarHandler : MonoBehaviour
     [Header("Hotbar Properties")]
     [SerializeField] private int _startingHotbarSlots;
 
-    public Item ItemTest;
+    public List<Item> StartingItems = new();
 
     private List<UISlotHandler> _uiSlots = new();
 
@@ -31,7 +31,9 @@ public class UIHotbarHandler : MonoBehaviour
         {
             GameObject hCopy = Instantiate(_hotbarPrefab, _hotbarParentTransform);
             _uiSlots.Add(hCopy.GetComponent<UISlotHandler>());
-            SetItemInHotbar(i, ItemTest);
+            // If there's a valid item, set it to that. Else, null.
+            Item itemToSetTo = (i < StartingItems.Count ? StartingItems[i] : null);
+            SetItemInHotbar(i, itemToSetTo);
         }
     }
 

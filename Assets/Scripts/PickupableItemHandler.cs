@@ -11,6 +11,15 @@ public class PickupableItemHandler : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    /// <summary>
+    /// Deletes this item and adds it to the player's
+    /// inventory and/or (TODO) backpack.
+    /// </summary>
+    public void PickUpItem()
+    {
+        Destroy(gameObject);
+    }
+
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();

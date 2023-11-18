@@ -14,20 +14,34 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI _tooltipDesc;
     [SerializeField] private Image _slotImage;
 
+    private bool _isEmpty = false;
+
     /// <summary>
     /// Sets the current slot handler's data to work with a new item.
+    /// If null, just initializes without setting information.
     /// </summary>
     /// <param name="itemInfo">The information of the item to newly set.</param>
     public void SetItem(Item itemInfo)
     {
-        _slotImage.sprite = itemInfo.ItemSprite;
-        _tooltipName.text = itemInfo.ItemName;
-        _tooltipDesc.text = itemInfo.ItemDescription;
+        // This slot is empty if there is no supplied item info.
+        _isEmpty = itemInfo == null;
+        // Set this information if not empty.
+        if (!_isEmpty)
+        {
+            _slotImage.sprite = itemInfo.ItemSprite;
+            _tooltipName.text = itemInfo.ItemName;
+            _tooltipDesc.text = itemInfo.ItemDescription;
+        }
         HideTooltip();
     }
 
+    /// <summary>
+    /// Shows the tooltip to describe the item's information.
+    /// If the slot is empty (no item info is stored), does nothing.
+    /// </summary>
     public void ShowTooltip()
     {
+        if (_isEmpty) { return; }
         _tooltipObject.SetActive(true);
     }
 

@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 1387560316}
   - component: {fileID: 1387560315}
   - component: {fileID: 1387560319}
+  - component: {fileID: 1387560320}
   - component: {fileID: 1387560318}
   m_Layer: 0
   m_Name: Player
@@ -768,7 +769,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a57da595d916a24f9eb765994611fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickupRange: 0
+  _pickupRange: 1
+--- !u!114 &1387560320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387560314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eb28a07b9fff64189b07519921949e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1395741616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,7 +989,12 @@ MonoBehaviour:
   _hotbarPrefab: {fileID: 3154228319106533370, guid: 6a1b79bde69177d4ea43b40fdbf5cff7, type: 3}
   _hotbarParentTransform: {fileID: 486844583}
   _startingHotbarSlots: 5
-  ItemTest: {fileID: 11400000, guid: 433a134dd5b14e742b0c97687a6aed16, type: 2}
+  StartingItems:
+  - {fileID: 11400000, guid: 433a134dd5b14e742b0c97687a6aed16, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

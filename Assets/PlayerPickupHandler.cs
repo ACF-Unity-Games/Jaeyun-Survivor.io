@@ -13,7 +13,13 @@ public class PlayerPickupHandler : MonoBehaviour
         GameObject[] pickupableObj = GameObject.FindGameObjectsWithTag("Pickupable");
         foreach (GameObject obj in pickupableObj)
         {
-            // TODO: Make stuff pickup-able here!
+            float distToObject = Vector3.Distance(transform.position, obj.transform.position);
+            if (distToObject < _pickupRange)
+            {
+                PickupableItemHandler pih = obj.GetComponent<PickupableItemHandler>();
+                if (pih == null) { continue; }  // If item doesn't have PIH, skip.
+                pih.PickUpItem();
+            }
         }
     }
 
