@@ -11,11 +11,15 @@ public class PickupableItemHandler : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    public Item ItemInfo {  
+        get { return _itemInfo; }  
+        set { _itemInfo = value; }
+    }
+
     /// <summary>
-    /// Deletes this item and adds it to the player's
-    /// inventory and/or (TODO) backpack.
+    /// Deletes this item.
     /// </summary>
-    public void PickUpItem()
+    public void DestroyItem()
     {
         Destroy(gameObject);
     }

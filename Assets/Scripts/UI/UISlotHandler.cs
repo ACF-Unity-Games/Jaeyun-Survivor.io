@@ -14,7 +14,12 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI _tooltipDesc;
     [SerializeField] private Image _slotImage;
 
-    private bool _isEmpty = false;
+    private bool _isEmpty;
+    public bool IsEmpty
+    {
+        get { return _isEmpty; }
+        private set { _isEmpty = value; }
+    }
 
     /// <summary>
     /// Sets the current slot handler's data to work with a new item.
@@ -41,7 +46,7 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// </summary>
     public void ShowTooltip()
     {
-        if (_isEmpty) { return; }
+        if (IsEmpty) { return; }
         _tooltipObject.SetActive(true);
     }
 

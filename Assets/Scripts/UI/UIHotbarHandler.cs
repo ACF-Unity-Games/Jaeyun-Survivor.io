@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class UIHotbarHandler : MonoBehaviour
 {
 
+    public static UIHotbarHandler Instance;
     [Header("Prefab Assignments")]
     [SerializeField] private GameObject _hotbarPrefab;
     [Header("Object Assignments")]
@@ -18,7 +20,55 @@ public class UIHotbarHandler : MonoBehaviour
 
     private void Awake()
     {
+        SetSingleton();
         InitializeHotbar();
+    }
+
+    /// <summary>
+    /// Sets the corresponding hotbar slot to contain a item.
+    /// </summary>
+    /// <param name="itemSlotIdx">The index of the hotbar to set.</param>
+    public void SetItemInHotbar(int itemSlotIdx, Item itemInfo)
+    {
+        UISlotHandler slotHandler = _uiSlots[itemSlotIdx];
+        slotHandler.SetItem(itemInfo);
+    }
+
+    /// <summary>
+    /// Adds an item to the current hotbar.
+    /// </summary>
+    public void AddItemToHotbar(Item itemInfo)
+    {
+        int idx = -1;
+        for (int i = 0; i < _uiSlots.Count; i++)
+        {
+            if (_uiSlots[i].IsEmpty)
+            {
+                idx = i;
+                break;
+            }
+        }
+        // If the index doesn't exist, add to inventory. (TODO)
+        // Or else, add the item here in the found slot.
+        if (idx == -1)
+        {
+
+        } else
+        {
+            _uiSlots[idx].SetItem(itemInfo);
+        }
+    }
+
+    /// <summary>
+    /// Ensure that this object is a singleton (only one exists at a time).
+    /// </summary>
+    private void SetSingleton()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        Instance = this;
     }
 
     /// <summary>
@@ -35,16 +85,6 @@ public class UIHotbarHandler : MonoBehaviour
             Item itemToSetTo = (i < StartingItems.Count ? StartingItems[i] : null);
             SetItemInHotbar(i, itemToSetTo);
         }
-    }
-
-    /// <summary>
-    /// Sets the corresponding hotbar slot to contain a item.
-    /// </summary>
-    /// <param name="itemSlotIdx">The index of the hotbar to set.</param>
-    public void SetItemInHotbar(int itemSlotIdx, Item itemInfo)
-    {
-        UISlotHandler slotHandler = _uiSlots[itemSlotIdx];
-        slotHandler.SetItem(itemInfo);
     }
 
 }
