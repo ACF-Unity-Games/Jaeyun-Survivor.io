@@ -10,7 +10,6 @@ public class HealthHandler : MonoBehaviour
     [SerializeField] private int _maxHealth;
 
     public bool IsDead() => _health == 0;
-    public int TakeDamage(int dmg) => _health = Mathf.Max(_health - dmg, 0);
     public int HealHealth(int hpGain) => _health = Mathf.Min(_maxHealth, _health + hpGain);
 
     /// <summary>
@@ -21,6 +20,20 @@ public class HealthHandler : MonoBehaviour
     {
         _maxHealth = hp;
         _health = hp;
+    }
+
+    /// <summary>
+    /// Makes this character take `dmg` amount of damage.
+    /// If dead, destroys the character.
+    /// </summary>
+    /// <param name="dmg"></param>
+    public void TakeDamage(int dmg)
+    {
+        _health = Mathf.Max(_health - dmg, 0);
+        if (IsDead())
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

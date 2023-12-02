@@ -25,6 +25,7 @@ public class EnemyMovementHandler : MonoBehaviour
 
     public void Initialize(EnemyInfo enemyInfo)
     {
+        Debug.Log("initialized!");
         _enemyInfo = enemyInfo;
         _spriteRenderer.sprite = enemyInfo.EnemySprite;
         transform.localScale = enemyInfo.EnemyScale;

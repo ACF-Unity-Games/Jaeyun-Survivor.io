@@ -17,6 +17,7 @@ public class EnemyHandler : MonoBehaviour
     {
         _enemyMovementHandler = GetComponent<EnemyMovementHandler>();
         _healthHandler = GetComponent<HealthHandler>();
+        Debug.Log("ok");
         _enemyMovementHandler.Initialize(_enemyInfo);
         _healthHandler.Initialize(_enemyInfo.MaxHealth);
     }
