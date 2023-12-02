@@ -12,11 +12,12 @@ public class UIHotbarHandler : MonoBehaviour
     [Header("Object Assignments")]
     [SerializeField] private Transform _hotbarParentTransform;
     [Header("Hotbar Properties")]
-    [SerializeField] private int _startingHotbarSlots;
+    [Tooltip("How many inventory slots the player should have")]
+    public int HotbarSlotCount;
 
-    public List<Item> StartingItems = new();
+    public List<ItemInfo> StartingItems = new();
 
-    private List<UISlotHandler> _uiSlots = new();
+    private readonly List<UISlotHandler> _uiSlots = new();
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class UIHotbarHandler : MonoBehaviour
     /// Sets the corresponding hotbar slot to contain a item.
     /// </summary>
     /// <param name="itemSlotIdx">The index of the hotbar to set.</param>
-    public void SetItemInHotbar(int itemSlotIdx, Item itemInfo)
+    public void SetItemInHotbar(int itemSlotIdx, ItemInfo itemInfo)
     {
         UISlotHandler slotHandler = _uiSlots[itemSlotIdx];
         slotHandler.SetItem(itemInfo);
@@ -37,7 +38,7 @@ public class UIHotbarHandler : MonoBehaviour
     /// <summary>
     /// Adds an item to the current hotbar.
     /// </summary>
-    public void AddItemToHotbar(Item itemInfo)
+    public void AddItemToHotbar(ItemInfo itemInfo)
     {
         int idx = -1;
         for (int i = 0; i < _uiSlots.Count; i++)
@@ -77,12 +78,12 @@ public class UIHotbarHandler : MonoBehaviour
     /// </summary>
     private void InitializeHotbar()
     {
-        for (int i = 0; i < _startingHotbarSlots; i++)
+        for (int i = 0; i < HotbarSlotCount; i++)
         {
             GameObject hCopy = Instantiate(_hotbarPrefab, _hotbarParentTransform);
             _uiSlots.Add(hCopy.GetComponent<UISlotHandler>());
             // If there's a valid item, set it to that. Else, null.
-            Item itemToSetTo = (i < StartingItems.Count ? StartingItems[i] : null);
+            ItemInfo itemToSetTo = (i < StartingItems.Count ? StartingItems[i] : null);
             SetItemInHotbar(i, itemToSetTo);
         }
     }
