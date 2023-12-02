@@ -52,6 +52,8 @@ public class PlayerItemHandler : MonoBehaviour
             GameObject obj = Instantiate(_spinnableItemPrefab, transform);
             _spawnedSpinningObjects.Add(obj);
             ItemRotateHandler irh = obj.GetComponent<ItemRotateHandler>();
+            CollisionDamageHandler cdh = obj.GetComponent<CollisionDamageHandler>();
+            cdh.DamageOnCollision = item.ItemAtk;
             irh.SetSpinningItem(item, transform);
             irh.SetTransformOffset(i * (360 / _currentItems.Count));
         }

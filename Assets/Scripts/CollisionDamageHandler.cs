@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDamageDealer : MonoBehaviour
+public class CollisionDamageHandler : MonoBehaviour
 {
 
     [Header("Layer Assignments")]
     [SerializeField] private LayerMask _damageableLayer;
+
+    public int DamageOnCollision = 1;
 
     private float _ineffectiveTime = 0.5f;
     private float _lastDamageTime;
@@ -17,7 +19,7 @@ public class CollisionDamageDealer : MonoBehaviour
         collision.gameObject.TryGetComponent(out HealthHandler hpHandler);
         if (hpHandler != null)
         {
-            hpHandler.TakeDamage(1);
+            hpHandler.TakeDamage(DamageOnCollision);
             _lastDamageTime = Time.time;
         }
     }
