@@ -28,7 +28,7 @@ public class ItemInfo : ScriptableObject
     [Tooltip("How much damage the item can take before breaking")]
     public int ItemHp;
     [Tooltip("How fast until the item can attack again (in seconds)")]
-    public int ItemAtkSpeed;
+    public float ItemDisableTime;
     [Tooltip("How fast until the item is able to be used after breaking (in seconds)")]
     public int ItemReloadTime;
 

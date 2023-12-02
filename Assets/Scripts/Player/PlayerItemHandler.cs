@@ -54,7 +54,7 @@ public class PlayerItemHandler : MonoBehaviour
             ItemRotateHandler irh = obj.GetComponent<ItemRotateHandler>();
             CollisionDamageHandler cdh = obj.GetComponent<CollisionDamageHandler>();
             cdh.DamageOnCollision = item.ItemAtk;
-            cdh.IneffectiveTime = item.ItemAtkSpeed;
+            cdh.IneffectiveTime = item.ItemDisableTime;
             irh.SetSpinningItem(item, transform);
             irh.SetTransformOffset(i * (360 / _currentItems.Count));
         }
