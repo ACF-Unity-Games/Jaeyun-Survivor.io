@@ -5,17 +5,14 @@ using UnityEngine;
 public class CollisionDamageHandler : MonoBehaviour
 {
 
-    [Header("Layer Assignments")]
-    [SerializeField] private LayerMask _damageableLayer;
+    public float IneffectiveTime;
+    public int DamageOnCollision;
 
-    public int DamageOnCollision = 1;
-
-    private float _ineffectiveTime = 0.5f;
     private float _lastDamageTime;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Time.time - _lastDamageTime <= _ineffectiveTime) { return; }
+        if (Time.time - _lastDamageTime <= IneffectiveTime) { return; }
         collision.gameObject.TryGetComponent(out HealthHandler hpHandler);
         if (hpHandler != null)
         {
