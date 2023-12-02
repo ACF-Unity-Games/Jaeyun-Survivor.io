@@ -21,7 +21,6 @@ public class PlayerPickupHandler : MonoBehaviour
         if (collision.CompareTag("Pickupable"))
         {
             GameObject obj = collision.gameObject;
-            if (obj == null) { return; }  // If the collider has no object, skip.
             if (obj.TryGetComponent(out PickupableItemHandler pickupableHandler))
             {
                 _playerItemHandler.AddItem(pickupableHandler.ItemInfo);

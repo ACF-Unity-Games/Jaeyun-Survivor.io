@@ -14,7 +14,7 @@ public struct ItemModifiers
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "Item", order = 1)]
-public class Item : ScriptableObject
+public class ItemInfo : ScriptableObject
 {
 
     [Header("Item Metadata")]

@@ -8,14 +8,22 @@ public class PlayerItemHandler : MonoBehaviour
     [Header("Prefab Assignments")]
     public GameObject _spinnableItemPrefab;
 
-    private List<Item> _currentItems = new();
-    private List<GameObject> _spawnedSpinningObjects = new();
+    private readonly List<ItemInfo> _currentItems = new();
+    private readonly List<GameObject> _spawnedSpinningObjects = new();
 
-    public void AddItem(Item item)
+    public void AddItem(ItemInfo item)
     {
-        _currentItems.Add(item);
-        UIHotbarHandler.Instance.AddItemToHotbar(item);
-        SpinItemsAroundPlayer();
+        if (_currentItems.Count >= UIHotbarHandler.Instance.HotbarSlotCount)
+        {
+            // If we don't have space in the hotbar, put it in the inventory
+        }
+        else
+        {
+            // Or else, just put it in the hotbar (in the empty slot)
+            _currentItems.Add(item);
+            UIHotbarHandler.Instance.AddItemToHotbar(item);
+            SpinItemsAroundPlayer();
+        }
     }
 
     private void Awake()
@@ -40,7 +48,7 @@ public class PlayerItemHandler : MonoBehaviour
         // Parent it to this sprite and add it to the spinning objects list.
         for (int i = 0; i < _currentItems.Count; i++)
         {
-            Item item = _currentItems[i];
+            ItemInfo item = _currentItems[i];
             GameObject obj = Instantiate(_spinnableItemPrefab, transform);
             _spawnedSpinningObjects.Add(obj);
             ItemRotateHandler irh = obj.GetComponent<ItemRotateHandler>();

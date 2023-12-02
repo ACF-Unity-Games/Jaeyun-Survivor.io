@@ -7,11 +7,11 @@ public class PickupableItemHandler : MonoBehaviour
 {
 
     [Header("Item Properties")]
-    [SerializeField] private Item _itemInfo;
+    [SerializeField] private ItemInfo _itemInfo;
 
     private SpriteRenderer _spriteRenderer;
 
-    public Item ItemInfo {  
+    public ItemInfo ItemInfo {  
         get { return _itemInfo; }  
         set { _itemInfo = value; }
     }
@@ -26,6 +26,7 @@ public class PickupableItemHandler : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Assert(_itemInfo != null, "Item info for object cannot be null!", this);
         _spriteRenderer = GetComponent<SpriteRenderer>();
         InitializeSprite();
     }

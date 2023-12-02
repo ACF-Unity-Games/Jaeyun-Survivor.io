@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7391672671872194158}
   - component: {fileID: 4565402464484352983}
   m_Layer: 0
-  m_Name: PickupableItem
+  m_Name: GroundItem
   m_TagString: Pickupable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 291847556, guid: 1eee6ba7e4290f448afad9934dacb48d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a747c9f4b0c5fe841b8a09379f09cb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemInfo: {fileID: 11400000, guid: 433a134dd5b14e742b0c97687a6aed16, type: 2}
+  _itemInfo: {fileID: 0}
 --- !u!58 &4565402464484352983
 CircleCollider2D:
   m_ObjectHideFlags: 0

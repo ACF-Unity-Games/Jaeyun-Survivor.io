@@ -26,7 +26,7 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// If null, just initializes without setting information.
     /// </summary>
     /// <param name="itemInfo">The information of the item to newly set.</param>
-    public void SetItem(Item itemInfo)
+    public void SetItem(ItemInfo itemInfo)
     {
         // This slot is empty if there is no supplied item info.
         _isEmpty = itemInfo == null;

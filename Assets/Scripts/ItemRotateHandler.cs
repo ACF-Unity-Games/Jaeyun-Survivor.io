@@ -20,7 +20,7 @@ public class ItemRotateHandler : MonoBehaviour
     /// </summary>
     /// <param name="item">Item data to set to.</param>
     /// <param name="transform">Transform to rotate around.</param>
-    public void SetSpinningItem(Item item, Transform transform)
+    public void SetSpinningItem(ItemInfo item, Transform transform)
     {
         _itemSpriteRenderer.sprite = item.ItemSprite;
         _targetTransform = transform;
