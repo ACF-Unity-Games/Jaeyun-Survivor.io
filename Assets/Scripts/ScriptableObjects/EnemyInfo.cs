@@ -10,6 +10,8 @@ public class EnemyInfo : ScriptableObject
     public string EnemyName;
     [TextArea(2, 6)]
     public string EnemyDescription;
+    public Sprite EnemySprite;
+    public Vector2 EnemyScale = new(1, 1);
     [Header("Enemy Properties")]
     public float FollowRange;
 
