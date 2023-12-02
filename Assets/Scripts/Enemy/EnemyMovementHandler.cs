@@ -5,21 +5,31 @@ using UnityEngine;
 public enum EnemyState
 {
     ROAM = 0, CHASE
-} 
+}
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyMovementHandler : MonoBehaviour
 {
 
     [Header("Enemy Properties")]
-    [SerializeField] private EnemyInfo _enemyInfo;
+    [SerializeField] private EnemyInfo _enemyInfo;  // TODO: Placeholder.
 
+    private SpriteRenderer _spriteRenderer;
     private GameObject _playerObject;
     private EnemyState _currState;
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerObject = GameObject.FindGameObjectWithTag("Player");
         Debug.Assert(_playerObject != null, "Tagged player object not found!", this);
+        Initialize(_enemyInfo);  // TODO: Placeholder.
+    }
+
+    public void Initialize(EnemyInfo enemyInfo)
+    {
+        _spriteRenderer.sprite = enemyInfo.EnemySprite;
+        transform.localScale = enemyInfo.EnemyScale;
     }
 
     private void Update()
