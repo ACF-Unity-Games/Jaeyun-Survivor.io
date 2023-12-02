@@ -11,9 +11,7 @@ public enum EnemyState
 public class EnemyMovementHandler : MonoBehaviour
 {
 
-    [Header("Enemy Properties")]
-    [SerializeField] private EnemyInfo _enemyInfo;  // TODO: Placeholder.
-
+    private EnemyInfo _enemyInfo;
     private SpriteRenderer _spriteRenderer;
     private GameObject _playerObject;
     private EnemyState _currState;
@@ -23,17 +21,18 @@ public class EnemyMovementHandler : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerObject = GameObject.FindGameObjectWithTag("Player");
         Debug.Assert(_playerObject != null, "Tagged player object not found!", this);
-        Initialize(_enemyInfo);  // TODO: Placeholder.
     }
 
     public void Initialize(EnemyInfo enemyInfo)
     {
+        _enemyInfo = enemyInfo;
         _spriteRenderer.sprite = enemyInfo.EnemySprite;
         transform.localScale = enemyInfo.EnemyScale;
     }
 
     private void Update()
     {
+        if (_enemyInfo == null) { return; }
         UpdateEnemyState();
         MoveBasedOnState();
     }
@@ -65,7 +64,7 @@ public class EnemyMovementHandler : MonoBehaviour
             case EnemyState.CHASE:
                 if (dist >= _enemyInfo.FollowRange)
                 {
-                    SwitchState(EnemyState.CHASE);
+                    SwitchState(EnemyState.ROAM);
                 }
                 break;
         }
@@ -84,6 +83,8 @@ public class EnemyMovementHandler : MonoBehaviour
                 break;
             case EnemyState.CHASE:
                 // Chase player!
+                Vector2 playerPos = _playerObject.transform.position;
+                transform.position = Vector2.MoveTowards(transform.position, playerPos, _enemyInfo.EnemyMoveSpeed * Time.deltaTime);
                 break;
         }
     }

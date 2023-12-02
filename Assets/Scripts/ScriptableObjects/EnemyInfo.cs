@@ -13,6 +13,8 @@ public class EnemyInfo : ScriptableObject
     public Sprite EnemySprite;
     public Vector2 EnemyScale = new(1, 1);
     [Header("Enemy Properties")]
-    public float FollowRange;
+    public int MaxHealth = 10;
+    public float FollowRange = 3;
+    public float EnemyMoveSpeed = 30;
 
 }

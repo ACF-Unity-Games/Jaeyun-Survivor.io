@@ -26,6 +26,10 @@ public class ItemRotateHandler : MonoBehaviour
         _targetTransform = transform;
     }
 
+    /// <summary>
+    /// Set the transform offset of this spinning item.
+    /// </summary>
+    /// <param name="angle"></param>
     public void SetTransformOffset(float angle)
     {
         transform.RotateAround(_targetTransform.position, Vector3.forward, angle);

@@ -817,11 +817,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1387560317}
   - component: {fileID: 1387560316}
+  - component: {fileID: 1387560322}
   - component: {fileID: 1387560315}
   - component: {fileID: 1387560319}
   - component: {fileID: 1387560320}
   - component: {fileID: 1387560318}
   - component: {fileID: 1387560321}
+  - component: {fileID: 1387560323}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -997,6 +999,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1387560322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387560314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8573e89551cd38c41942b68049727d15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startingHealth: 0
+--- !u!114 &1387560323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387560314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e521c1b4fb93e844a34b3007a476ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+  _maxHealth: 0
 --- !u!1 &1419672677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,10 +1352,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5130918220771782285, guid: 5fa13b7a46ec36d43bb20613e28251ec, type: 3}
+      propertyPath: _enemyInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: d1ba1a0913fc4c94ebc58bceac7edb15, type: 2}
     - target: {fileID: 7564282140946724957, guid: 5fa13b7a46ec36d43bb20613e28251ec, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7930933881047715644, guid: 5fa13b7a46ec36d43bb20613e28251ec, type: 3}
+      propertyPath: _enemyInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: d1ba1a0913fc4c94ebc58bceac7edb15, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1352,7 +1389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6a0e6da56b85a4f9acd046b02604f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyInfo: {fileID: 11400000, guid: d1ba1a0913fc4c94ebc58bceac7edb15, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

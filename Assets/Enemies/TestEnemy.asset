@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: My Test Enemy
   EnemyDescription: This is a random description about my enemy. They are cool.
+  EnemySprite: {fileID: 21300000, guid: 154d17df2d858ce48aa14bc183d330f8, type: 3}
+  EnemyScale: {x: 1, y: 1}
   FollowRange: 4
+  EnemyMoveSpeed: 0.5
