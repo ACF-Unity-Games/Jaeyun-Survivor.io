@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class CollisionDamageHandler : MonoBehaviour
     public string TagToDamage;
 
     private float _lastDamageTime;
+
+    public Action OnDealDamage;
 
     public void Initialize(int damage)
     {
@@ -24,13 +27,19 @@ public class CollisionDamageHandler : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerStay2D(Collider2D collision)
     {
-        // if (collision.gameObject.tag != TagToDamage) { return; }
+        GameObject colObject = collision.gameObject;
+        if (colObject.tag != TagToDamage) { return; }
         if (Time.time - _lastDamageTime <= IneffectiveTime) { return; }
-        collision.gameObject.TryGetComponent(out HealthHandler hpHandler);
-        if (hpHandler != null)
+        if (colObject.TryGetComponent(out HealthHandler hpHandler))
         {
             hpHandler.TakeDamage(DamageOnCollision);
             _lastDamageTime = Time.time;
+            // Damage this too, if possible
+            if (TryGetComponent(out HealthHandler thisHpHandler) && colObject.TryGetComponent(out CollisionDamageHandler otherColDamageHandler))
+            {
+                thisHpHandler.TakeDamage(otherColDamageHandler.DamageOnCollision);
+            }
+            OnDealDamage?.Invoke();
         }
     }
 

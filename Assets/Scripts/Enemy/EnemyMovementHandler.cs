@@ -95,6 +95,7 @@ public class EnemyMovementHandler : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
+        if (_enemyInfo == null) { return; }
         UnityEditor.Handles.color = Color.green;
         UnityEditor.Handles.DrawWireDisc(transform.position, transform.forward, _enemyInfo.FollowRange);
     }
