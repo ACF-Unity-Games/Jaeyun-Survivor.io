@@ -11,12 +11,18 @@ public class CollisionDamageHandler : MonoBehaviour
 
     private float _lastDamageTime;
 
+    public void Initialize(int damage)
+    {
+        DamageOnCollision = damage;
+        IneffectiveTime = 0.5f;
+    }
+
     /// <summary>
     /// When this collides with something that has a HealthHandler,
     /// deals damage.
     /// </summary>
     /// <param name="collision"></param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         // if (collision.gameObject.tag != TagToDamage) { return; }
         if (Time.time - _lastDamageTime <= IneffectiveTime) { return; }

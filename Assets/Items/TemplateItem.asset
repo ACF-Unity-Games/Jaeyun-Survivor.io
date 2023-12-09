@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemSprite: {fileID: 291847556, guid: 1eee6ba7e4290f448afad9934dacb48d, type: 3}
   ItemAtk: 2
   ItemHp: 5
-  ItemAtkSpeed: 1
+  ItemDisableTime: 0.5
   ItemReloadTime: 2
   ItemModifiers:
     PlayerSpdInc: 0

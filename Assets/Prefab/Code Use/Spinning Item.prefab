@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fd54387f2b93b4fa22a3a9a74115ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  IneffectiveTime: 0
+  DamageOnCollision: 0
+  TagToDamage: Enemy
 --- !u!58 &-1604173390297463344
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -5,12 +5,27 @@ using UnityEngine;
 public class HealthHandler : MonoBehaviour
 {
 
+    [Header("Object Assignments")]
+    [SerializeField] private Transform _hpBarScale;
     [Header("Health Properties")]
     [SerializeField] private int _health;
     [SerializeField] private int _maxHealth;
 
-    public bool IsDead() => _health == 0;
-    public int HealHealth(int hpGain) => _health = Mathf.Min(_maxHealth, _health + hpGain);
+    public int Health
+    {
+        set
+        {
+            _health = value;
+            if (_hpBarScale != null)
+            {
+                _hpBarScale.localScale = new Vector3((float)_health / _maxHealth, 1, 1);
+            }
+        }
+        get => _health;
+    }
+
+    public bool IsDead() => Health == 0;
+    public int HealHealth(int hpGain) => Health = Mathf.Min(_maxHealth, Health + hpGain);
 
     /// <summary>
     /// Initializes the enemy at max and current health.
@@ -19,7 +34,7 @@ public class HealthHandler : MonoBehaviour
     public void Initialize(int hp)
     {
         _maxHealth = hp;
-        _health = hp;
+        Health = hp;
     }
 
     /// <summary>
@@ -29,7 +44,7 @@ public class HealthHandler : MonoBehaviour
     /// <param name="dmg"></param>
     public void TakeDamage(int dmg)
     {
-        _health = Mathf.Max(_health - dmg, 0);
+        Health = Mathf.Max(Health - dmg, 0);
         if (IsDead())
         {
             Destroy(gameObject);
