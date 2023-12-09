@@ -32,13 +32,13 @@ public class UIHotbarHandler : MonoBehaviour
     public void SetItemInHotbar(int itemSlotIdx, ItemInfo itemInfo)
     {
         UISlotHandler slotHandler = _uiSlots[itemSlotIdx];
-        slotHandler.SetItem(itemInfo);
+        slotHandler.SetItem(itemInfo, 1);
     }
 
     /// <summary>
     /// Adds an item to the current hotbar.
     /// </summary>
-    public void AddItemToHotbar(ItemInfo itemInfo)
+    public UISlotHandler AddItemToHotbar(ItemInfo itemInfo, float healthRatio)
     {
         int idx = -1;
         for (int i = 0; i < _uiSlots.Count; i++)
@@ -53,10 +53,11 @@ public class UIHotbarHandler : MonoBehaviour
         // Or else, add the item here in the found slot.
         if (idx == -1)
         {
-
+            return null;
         } else
         {
-            _uiSlots[idx].SetItem(itemInfo);
+            _uiSlots[idx].SetItem(itemInfo, healthRatio);
+            return _uiSlots[idx];
         }
     }
 

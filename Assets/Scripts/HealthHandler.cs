@@ -25,6 +25,7 @@ public class HealthHandler : MonoBehaviour
     }
 
     public bool IsDead() => Health == 0;
+    public float GetHealthRatio() => (float)Health / _maxHealth;
     public int HealHealth(int hpGain) => Health = Mathf.Min(_maxHealth, Health + hpGain);
 
     /// <summary>

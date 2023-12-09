@@ -8,6 +8,8 @@ public class PlayerItemHandler : MonoBehaviour
     [Header("Prefab Assignments")]
     public GameObject _spinnableItemPrefab;
 
+    private UISlotHandler _slotHandler;
+
     private readonly List<ItemInfo> _currentItems = new();
     private readonly List<GameObject> _spawnedSpinningObjects = new();
 
@@ -21,7 +23,7 @@ public class PlayerItemHandler : MonoBehaviour
         {
             // Or else, just put it in the hotbar (in the empty slot)
             _currentItems.Add(item);
-            UIHotbarHandler.Instance.AddItemToHotbar(item);
+            _slotHandler = UIHotbarHandler.Instance.AddItemToHotbar(item, 1);
             SpinItemsAroundPlayer();
         }
     }
@@ -55,7 +57,7 @@ public class PlayerItemHandler : MonoBehaviour
             CollisionDamageHandler cdh = obj.GetComponent<CollisionDamageHandler>();
             cdh.DamageOnCollision = item.ItemAtk;
             cdh.IneffectiveTime = item.ItemDisableTime;
-            irh.SetSpinningItem(item, transform);
+            irh.SetSpinningItem(item, _slotHandler, transform);
             irh.SetTransformOffset(i * (360 / _currentItems.Count));
         }
     }

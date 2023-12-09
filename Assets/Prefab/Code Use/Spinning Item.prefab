@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7344092955945569132}
   - component: {fileID: -3256362227156109933}
   - component: {fileID: -7016264447574296006}
+  - component: {fileID: 8311820561045149368}
   - component: {fileID: -1604173390297463344}
   m_Layer: 0
   m_Name: Spinning Item
@@ -128,6 +129,21 @@ MonoBehaviour:
   IneffectiveTime: 0
   DamageOnCollision: 0
   TagToDamage: Enemy
+--- !u!114 &8311820561045149368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6625870402605073817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e521c1b4fb93e844a34b3007a476ee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBarScale: {fileID: 0}
+  _health: 0
+  _maxHealth: 0
 --- !u!58 &-1604173390297463344
 CircleCollider2D:
   m_ObjectHideFlags: 0

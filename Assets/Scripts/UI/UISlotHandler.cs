@@ -27,7 +27,7 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     /// If null, just initializes without setting information.
     /// </summary>
     /// <param name="itemInfo">The information of the item to newly set.</param>
-    public void SetItem(ItemInfo itemInfo)
+    public void SetItem(ItemInfo itemInfo, float healthRatio)
     {
         // This slot is empty if there is no supplied item info.
         _isEmpty = itemInfo == null;
@@ -37,8 +37,18 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             _slotImage.sprite = itemInfo.ItemSprite;
             _tooltipName.text = itemInfo.ItemName;
             _tooltipDesc.text = itemInfo.ItemDescription;
+            UpdateBGHealth(healthRatio);
         }
         HideTooltip();
+    }
+    
+    /// <summary>
+    /// Updates the scale of the BG for this slot.
+    /// </summary>
+    /// <param name="healthRatio">The ratio (0-1) of the background that should fill.</param>
+    public void UpdateBGHealth(float healthRatio)
+    {
+        _slotBGImage.transform.localScale = new Vector2(1, healthRatio);
     }
 
     /// <summary>

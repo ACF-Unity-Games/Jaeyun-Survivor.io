@@ -5,12 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(CollisionDamageHandler))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(ItemRotateHandler))]
+[RequireComponent(typeof(HealthHandler))]
 public class SpinningItemHandler : MonoBehaviour
 {
 
     private SpriteRenderer _spriteRenderer;
     private CollisionDamageHandler _collisionDamageHandler;
     private ItemRotateHandler _itemRotateHandler;
+    private HealthHandler _healthHandler;
     private UISlotHandler _uiSlotHandler;
 
     private ItemInfo _currItem;
@@ -19,11 +21,14 @@ public class SpinningItemHandler : MonoBehaviour
     /// Set the information for this current spinning item.
     /// </summary>
     /// <param name="item">Item data to set to.</param>
+    /// <param name="uiSlot">UI slot this corresponds to.</param>
     /// <param name="transform">Transform to rotate around.</param>
-    public void SetSpinningItem(ItemInfo item, Transform transform)
+    public void SetSpinningItem(ItemInfo item, UISlotHandler uiSlotHandler, Transform transform)
     {
         _currItem = item;
+        _uiSlotHandler = uiSlotHandler;
         _itemRotateHandler.SetSpinningItem(item, transform);
+        _healthHandler.Initialize(_currItem.ItemHp);
     }
 
     /// <summary>
@@ -40,6 +45,7 @@ public class SpinningItemHandler : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _itemRotateHandler = GetComponent<ItemRotateHandler>();
         _collisionDamageHandler = GetComponent<CollisionDamageHandler>();
+        _healthHandler = GetComponent<HealthHandler>();
     }
 
     private void Start()
@@ -54,6 +60,7 @@ public class SpinningItemHandler : MonoBehaviour
     {
         _collisionDamageHandler.enabled = false;
         _spriteRenderer.color -= new Color(0, 0, 0, 0.8f);
+        _uiSlotHandler.UpdateBGHealth(_healthHandler.GetHealthRatio());
         yield return new WaitForSeconds(_currItem.ItemDisableTime);
         _spriteRenderer.color += new Color(0, 0, 0, 0.8f);
         _collisionDamageHandler.enabled = true;

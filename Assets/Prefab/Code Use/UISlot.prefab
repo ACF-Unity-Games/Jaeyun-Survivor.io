@@ -455,6 +455,7 @@ MonoBehaviour:
   _tooltipName: {fileID: 7215047553329230836}
   _tooltipDesc: {fileID: 5913633553557174055}
   _slotImage: {fileID: 8632873928560207518}
+  _slotBGImage: {fileID: 5269597533345444090}
 --- !u!1 &5181741408277598311
 GameObject:
   m_ObjectHideFlags: 0
