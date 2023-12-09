@@ -318,8 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBarScale: {fileID: 7931448671152441730}
-  _health: 0
-  _maxHealth: 0
 --- !u!114 &826841542939190731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,9 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fd54387f2b93b4fa22a3a9a74115ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IneffectiveTime: 0
-  DamageOnCollision: 0
-  TagToDamage: Player
+  _tagToDamage: Player
 --- !u!114 &5130918220771782285
 MonoBehaviour:
   m_ObjectHideFlags: 0

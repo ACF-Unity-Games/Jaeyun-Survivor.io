@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemAtk: 2
   ItemHp: 5
   ItemDisableTime: 0.5
-  ItemReloadTime: 2
+  ItemReloadTime: 6
   ItemModifiers:
     PlayerSpdInc: 0
     PlayerSizeInc: 0

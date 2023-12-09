@@ -8,13 +8,13 @@ public class HealthHandler : MonoBehaviour
 
     [Header("Object Assignments")]
     [SerializeField] private Transform _hpBarScale;
-    [Header("Health Properties")]
-    [SerializeField] private int _health;
-    [SerializeField] private int _maxHealth;
+    
+    private int _health;
+    private int _maxHealth;
 
     public Action<GameObject> OnDeath;
 
-    public int Health
+    [HideInInspector] public int Health
     {
         set
         {

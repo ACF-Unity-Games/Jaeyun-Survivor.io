@@ -126,9 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fd54387f2b93b4fa22a3a9a74115ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IneffectiveTime: 0
-  DamageOnCollision: 0
-  TagToDamage: Enemy
+  _tagToDamage: Enemy
 --- !u!114 &8311820561045149368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBarScale: {fileID: 0}
-  _health: 0
-  _maxHealth: 0
 --- !u!58 &-1604173390297463344
 CircleCollider2D:
   m_ObjectHideFlags: 0

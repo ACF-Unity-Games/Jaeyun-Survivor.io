@@ -16,8 +16,7 @@ public class UIHotbarHandler : MonoBehaviour
     public int HotbarSlotCount;
 
     public List<ItemInfo> StartingItems = new();
-
-    private readonly List<UISlotHandler> _uiSlots = new();
+    public List<UISlotHandler> UISlots = new();
 
     private void Awake()
     {
@@ -31,7 +30,7 @@ public class UIHotbarHandler : MonoBehaviour
     /// <param name="itemSlotIdx">The index of the hotbar to set.</param>
     public void SetItemInHotbar(int itemSlotIdx, ItemInfo itemInfo)
     {
-        UISlotHandler slotHandler = _uiSlots[itemSlotIdx];
+        UISlotHandler slotHandler = UISlots[itemSlotIdx];
         slotHandler.SetItem(itemInfo, 1);
     }
 
@@ -41,9 +40,9 @@ public class UIHotbarHandler : MonoBehaviour
     public UISlotHandler AddItemToHotbar(ItemInfo itemInfo, float healthRatio)
     {
         int idx = -1;
-        for (int i = 0; i < _uiSlots.Count; i++)
+        for (int i = 0; i < UISlots.Count; i++)
         {
-            if (_uiSlots[i].IsEmpty)
+            if (UISlots[i].IsEmpty)
             {
                 idx = i;
                 break;
@@ -56,8 +55,8 @@ public class UIHotbarHandler : MonoBehaviour
             return null;
         } else
         {
-            _uiSlots[idx].SetItem(itemInfo, healthRatio);
-            return _uiSlots[idx];
+            UISlots[idx].SetItem(itemInfo, healthRatio);
+            return UISlots[idx];
         }
     }
 
@@ -82,7 +81,7 @@ public class UIHotbarHandler : MonoBehaviour
         for (int i = 0; i < HotbarSlotCount; i++)
         {
             GameObject hCopy = Instantiate(_hotbarPrefab, _hotbarParentTransform);
-            _uiSlots.Add(hCopy.GetComponent<UISlotHandler>());
+            UISlots.Add(hCopy.GetComponent<UISlotHandler>());
             // If there's a valid item, set it to that. Else, null.
             ItemInfo itemToSetTo = (i < StartingItems.Count ? StartingItems[i] : null);
             SetItemInHotbar(i, itemToSetTo);

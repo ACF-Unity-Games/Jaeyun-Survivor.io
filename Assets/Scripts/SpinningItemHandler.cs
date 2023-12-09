@@ -62,7 +62,7 @@ public class SpinningItemHandler : MonoBehaviour
 
     private IEnumerator DisableItemTemporarilyAfterDestroyed()
     {
-        _collisionDamageHandler.enabled = false;
+        _collisionDamageHandler.IsActive = false;
         _spriteRenderer.color -= new Color(0, 0, 0, 0.8f);
         _healthHandler.ResetToMaxHealth();
         float currTime = 0;
@@ -74,7 +74,7 @@ public class SpinningItemHandler : MonoBehaviour
             yield return null;
         }
         _spriteRenderer.color += new Color(0, 0, 0, 0.8f);
-        _collisionDamageHandler.enabled = true;
+        _collisionDamageHandler.IsActive = true;
     }
 
 }
