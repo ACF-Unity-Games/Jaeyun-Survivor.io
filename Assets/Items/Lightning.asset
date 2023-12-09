@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db113a89e564af744b8483d6ce562c24, type: 3}
-  m_Name: Item
+  m_Name: Lightning
   m_EditorClassIdentifier: 
-  ItemName: 
-  ItemDescription: 
-  ItemSprite: {fileID: 0}
-  ItemAtk: 0
-  ItemHp: 0
-  ItemAtkSpeed: 0
+  ItemName: Lightning
+  ItemDescription: We borrowed it from Zeus
+  ItemSprite: {fileID: 920389479, guid: 462167e6e4e42bf4992dc9299ba63a9b, type: 3}
+  ItemAtk: 150
+  ItemHp: 1
+  ItemDisableTime: 0.05
   ItemReloadTime: 0
   ItemModifiers:
-    PlayerSpdInc: 0
+    PlayerSpdInc: 1
     PlayerSizeInc: 0
     PlayerVsnInc: 0
