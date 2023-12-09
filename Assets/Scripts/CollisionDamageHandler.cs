@@ -28,7 +28,7 @@ public class CollisionDamageHandler : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         GameObject colObject = collision.gameObject;
-        if (colObject.tag != TagToDamage) { return; }
+        if (!colObject.CompareTag(TagToDamage)) { return; }
         if (Time.time - _lastDamageTime <= IneffectiveTime) { return; }
         if (colObject.TryGetComponent(out HealthHandler hpHandler))
         {

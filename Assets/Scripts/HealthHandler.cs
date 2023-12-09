@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class HealthHandler : MonoBehaviour
     [Header("Health Properties")]
     [SerializeField] private int _health;
     [SerializeField] private int _maxHealth;
+
+    public Action<GameObject> OnDeath;
 
     public int Health
     {
@@ -48,7 +51,8 @@ public class HealthHandler : MonoBehaviour
         Health = Mathf.Max(Health - dmg, 0);
         if (IsDead())
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            //OnDeath.Invoke(gameObject);
         }
     }
 
