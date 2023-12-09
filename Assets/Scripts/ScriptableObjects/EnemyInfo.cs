@@ -14,7 +14,7 @@ public class EnemyInfo : ScriptableObject
     public Vector2 EnemyScale = new(1, 1);
     [Header("Enemy Properties")]
     public int MaxHealth = 10;
-    public float Damage = 1;
+    public int EnemyDamage = 1;
     public float FollowRange = 3;
     public float EnemyMoveSpeed = 30;
 

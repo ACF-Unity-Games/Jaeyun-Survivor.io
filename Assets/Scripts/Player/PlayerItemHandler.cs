@@ -28,8 +28,8 @@ public class PlayerItemHandler : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Assert(_spinnableItemPrefab.GetComponent<ItemRotateHandler>() != null,
-                    "Attached prefab must have a ItemRotateHandler attached!", this);
+        Debug.Assert(_spinnableItemPrefab.GetComponent<SpinningItemHandler>() != null,
+                    "Attached prefab must have a SpinningItemHandler attached!", this);
     }
 
     private void Start()
@@ -51,7 +51,7 @@ public class PlayerItemHandler : MonoBehaviour
             ItemInfo item = _currentItems[i];
             GameObject obj = Instantiate(_spinnableItemPrefab, transform);
             _spawnedSpinningObjects.Add(obj);
-            ItemRotateHandler irh = obj.GetComponent<ItemRotateHandler>();
+            SpinningItemHandler irh = obj.GetComponent<SpinningItemHandler>();
             CollisionDamageHandler cdh = obj.GetComponent<CollisionDamageHandler>();
             cdh.DamageOnCollision = item.ItemAtk;
             cdh.IneffectiveTime = item.ItemDisableTime;

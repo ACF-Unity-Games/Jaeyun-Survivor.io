@@ -13,6 +13,7 @@ public class UISlotHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI _tooltipName;
     [SerializeField] private TextMeshProUGUI _tooltipDesc;
     [SerializeField] private Image _slotImage;
+    [SerializeField] private Image _slotBGImage;
 
     private bool _isEmpty;
     public bool IsEmpty
