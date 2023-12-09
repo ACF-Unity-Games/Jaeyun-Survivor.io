@@ -23,6 +23,10 @@ public class EnemyHandler : MonoBehaviour
         _enemyMovementHandler.Initialize(_enemyInfo);
         _healthHandler.Initialize(_enemyInfo.MaxHealth);
         _collisionDamageHandler.Initialize(_enemyInfo.EnemyDamage);
+        _healthHandler.OnDeath = (gameObject) =>
+        {
+            Destroy(gameObject);
+        };
     }
 
 }

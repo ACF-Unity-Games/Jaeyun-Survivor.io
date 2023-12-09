@@ -18,6 +18,10 @@ public class PlayerHandler : MonoBehaviour
     {
         _healthHandler = GetComponent<HealthHandler>();
         _healthHandler.Initialize(_startingHealth);
+        _healthHandler.OnDeath = (gameObject) =>
+        {
+            Destroy(gameObject);
+        };
     }
 
 }

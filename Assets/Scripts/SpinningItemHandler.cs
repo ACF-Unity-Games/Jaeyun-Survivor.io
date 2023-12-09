@@ -50,18 +50,29 @@ public class SpinningItemHandler : MonoBehaviour
 
     private void Start()
     {
-        _collisionDamageHandler.OnDealDamage += () =>
+        _collisionDamageHandler.OnDealDamage = () =>
         {
-            StartCoroutine(DisableItemTemporarilyAfterUse());
+            _uiSlotHandler.UpdateBGHealth(_healthHandler.GetHealthRatio());
+        };
+        _healthHandler.OnDeath = (gameObject) =>
+        {
+            StartCoroutine(DisableItemTemporarilyAfterDestroyed());
         };
     }
 
-    private IEnumerator DisableItemTemporarilyAfterUse()
+    private IEnumerator DisableItemTemporarilyAfterDestroyed()
     {
         _collisionDamageHandler.enabled = false;
         _spriteRenderer.color -= new Color(0, 0, 0, 0.8f);
-        _uiSlotHandler.UpdateBGHealth(_healthHandler.GetHealthRatio());
-        yield return new WaitForSeconds(_currItem.ItemDisableTime);
+        _healthHandler.ResetToMaxHealth();
+        float currTime = 0;
+        float timeToWait = _currItem.ItemReloadTime;
+        while (currTime < timeToWait)
+        {
+            currTime += Time.deltaTime;
+            _uiSlotHandler.UpdateBGHealth(currTime / timeToWait);
+            yield return null;
+        }
         _spriteRenderer.color += new Color(0, 0, 0, 0.8f);
         _collisionDamageHandler.enabled = true;
     }
