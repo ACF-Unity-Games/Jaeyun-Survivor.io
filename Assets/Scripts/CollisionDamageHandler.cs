@@ -7,6 +7,7 @@ public class CollisionDamageHandler : MonoBehaviour
 
     public float IneffectiveTime;
     public int DamageOnCollision;
+    public string TagToDamage;
 
     private float _lastDamageTime;
 
@@ -17,6 +18,7 @@ public class CollisionDamageHandler : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if (collision.gameObject.tag != TagToDamage) { return; }
         if (Time.time - _lastDamageTime <= IneffectiveTime) { return; }
         collision.gameObject.TryGetComponent(out HealthHandler hpHandler);
         if (hpHandler != null)

@@ -30,7 +30,7 @@ public class ItemInfo : ScriptableObject
     [Tooltip("How fast until the item can attack again (in seconds)")]
     public float ItemDisableTime;
     [Tooltip("How fast until the item is able to be used after breaking (in seconds)")]
-    public int ItemReloadTime;
+    public float ItemReloadTime;
 
     [Header("Item Modifiers")]
     public ItemModifiers ItemModifiers;
