@@ -29,6 +29,11 @@ public class SpinningItemHandler : MonoBehaviour
         _uiSlotHandler = uiSlotHandler;
         _itemRotateHandler.SetSpinningItem(item, transform);
         _healthHandler.Initialize(_currItem.ItemHp);
+        _healthHandler.OnUpdate = () =>
+        {
+            uiSlotHandler.UpdateBGHealth(_healthHandler.GetHealthRatio());
+        };
+        _healthHandler.OnUpdate.Invoke();
     }
 
     /// <summary>
@@ -50,10 +55,6 @@ public class SpinningItemHandler : MonoBehaviour
 
     private void Start()
     {
-        _collisionDamageHandler.OnDealDamage = () =>
-        {
-            _uiSlotHandler.UpdateBGHealth(_healthHandler.GetHealthRatio());
-        };
         _healthHandler.OnDeath = (gameObject) =>
         {
             StartCoroutine(DisableItemTemporarilyAfterDestroyed());

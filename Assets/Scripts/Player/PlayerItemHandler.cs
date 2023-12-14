@@ -53,8 +53,14 @@ public class PlayerItemHandler : MonoBehaviour
             _spawnedSpinningObjects.Add(obj);
             SpinningItemHandler irh = obj.GetComponent<SpinningItemHandler>();
             CollisionDamageHandler cdh = obj.GetComponent<CollisionDamageHandler>();
+            HealthHandler hh = obj.GetComponent<HealthHandler>();
+            UISlotHandler ui = UIHotbarHandler.Instance.UISlots[i];
+            cdh.OnDealDamage = () =>
+            {
+                ui.UpdateBGHealth(hh.GetHealthRatio());
+            };
+            irh.SetSpinningItem(item, ui, transform); 
             cdh.Initialize(item);
-            irh.SetSpinningItem(item, UIHotbarHandler.Instance.UISlots[i], transform);
             irh.SetTransformOffset(i * (360 / _currentItems.Count));
         }
     }

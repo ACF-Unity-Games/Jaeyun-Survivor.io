@@ -9,7 +9,7 @@ public class HealthHandler : MonoBehaviour
     [Header("Object Assignments")]
     [SerializeField] private Transform _hpBarScale;
     
-    private int _health;
+    private int _health = 0;
     private int _maxHealth;
 
     public Action<GameObject> OnDeath;
@@ -23,6 +23,7 @@ public class HealthHandler : MonoBehaviour
             {
                 _hpBarScale.localScale = new Vector3((float)_health / _maxHealth, 1, 1);
             }
+            OnUpdate?.Invoke();
         }
         get => _health;
     }
@@ -31,6 +32,8 @@ public class HealthHandler : MonoBehaviour
     public float GetHealthRatio() => (float)Health / _maxHealth;
     public void ResetToMaxHealth() => Health = _maxHealth;
     public int HealHealth(int hpGain) => Health = Mathf.Min(_maxHealth, Health + hpGain);
+
+    public Action OnUpdate;
 
     /// <summary>
     /// Initializes the enemy at max and current health.
