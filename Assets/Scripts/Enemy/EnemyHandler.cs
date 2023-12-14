@@ -24,6 +24,15 @@ public class EnemyHandler : MonoBehaviour
 
     private void Start()
     {
+        if (_enemyInfo != null)
+        {
+            SetEnemy(_enemyInfo);
+        }
+    }
+
+    public void SetEnemy(EnemyInfo enemyInfo)
+    {
+        _enemyInfo = enemyInfo;
         _enemyMovementHandler.Initialize(_enemyInfo);
         _healthHandler.Initialize(_enemyInfo.MaxHealth);
         _collisionDamageHandler.Initialize(_enemyInfo.EnemyDamage);
